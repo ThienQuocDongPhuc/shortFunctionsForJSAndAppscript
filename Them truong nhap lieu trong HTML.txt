@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id='demo1'></div>
+    <div id='demo2'></div>
+    <div id='demo3'></div>
+    <div id='demo4'></div>
+    <div id='demo5'></div>
+  </body>
+  
+  <script>
+    createFieldTo('id', 'demo1', 'text', withButton=1);
+    createFieldTo('id', 'demo2', 'number', withButton=1);
+    createFieldTo('id', 'demo3', 'date', withButton=1);
+    createFieldTo('id', 'demo4', 'select', withButton=1, ['option 1', 'option 2', 'option 3']);
+    createFieldTo('id', 'demo5', 'radio', withButton=1, ['option 1', 'option 2', 'option 3']);
+    
+    function createFieldTo(option, idOrName, type, withButton=0, details=[]) {
+      var parent;
+      if (option === 'id') {
+        parent = document.getElementById(idOrName);
+      } else if (option === 'name') {
+        var parents = document.getElementsByName(idOrName);
+        parent = parents[parents.length-1];
+      } else {
+        console.error('Invalid option');
+        return;
+      }
+    
+      var n = parent.childElementCount;
+    
+      // Create a container element to hold the input and the button
+      var container = document.createElement('div');
+      container.classList.add('container'+idOrName+n);
+      parent.appendChild(container);
+    
+      if (type === 'text' || type === 'number' || type === 'date') {
+        var newField = document.createElement('input');
+        newField.id = idOrName;
+        newField.type = type;
+        newField.name = idOrName + 's';
+        newField.placeholder = idOrName.charAt(0).toUpperCase() + idOrName.slice(1);
+        container.appendChild(newField);
+      } else if (type === 'select') {
+        const newField = document.createElement('select');
+        newField.id = idOrName;
+        newField.name = idOrName + 's';
+        container.appendChild(newField);
+        for (let detail of details) {
+          const option = document.createElement('option');
+          option.text = detail;
+          option.value = detail;
+          newField.add(option);
+        }
+      } else if (type === 'radio') {
+        for (let detail of details) {
+          const newField = document.createElement('input');
+          newField.id = idOrName + detail;
+          newField.type = 'radio';
+          newField.name = idOrName;
+          newField.value = detail;
+          container.appendChild(newField);
+          const label = document.createElement('label');
+          label.htmlFor = idOrName + detail;
+          label.textContent = detail;
+          container.appendChild(label);
+        }
+      }
+    
+      if (withButton == 1){
+        // Create and add the "add" button
+        var addBtn = document.createElement('button');
+        addBtn.id = 'add';
+        addBtn.type = 'button';
+        addBtn.textContent = 'Add';
+        addBtn.onclick = function() {
+          createFieldTo(option, idOrName, type, withButton, details);
+        };
+        container.appendChild(addBtn);
+      }
+    }
+  </script>
+</html>

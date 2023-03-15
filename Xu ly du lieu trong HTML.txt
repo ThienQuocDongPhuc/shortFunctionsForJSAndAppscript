@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Điền dữ liệu vào id</h1>
+    <div>
+      <select id='mySelectId'>
+        <option disabled selected>Choose 1 option</option>
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+      </select>
+    </div>
+    
+    <div>  
+      <input id='inputId' type='text' placeholder="Nhập text">
+    </div>
+    
+    <div>  
+      <input id='inputDateId' type='date'>
+    </div>
+    <div>  
+      <input id='inputDateId1' type='date'>
+    </div>
+    
+    <h1>Điền dữ liệu vào name</h1>
+    <div>
+      <select id='mySelect' name='test'>
+        <option disabled selected>Choose 1 option</option>
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+      </select>
+    </div>
+    <div>
+      <select id='mySelect1' name='test'>
+        <option disabled selected>Choose 1 option</option>
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+      </select>
+    </div>
+    
+    <div>  
+      <input id='input1' type='text' name='try' placeholder="Nhập text">
+    </div>
+    
+    <div>
+      <input id='input2' type='text' name='try' placeholder="Nhập text">
+    </div>
+    
+    <div>
+      <input id='input3' type='number' name='try' placeholder="Nhập số">
+    </div>
+    
+    <div>  
+      <input id='input4' type='date' name='inputDate'>
+    </div>
+    
+    <div>
+      <input id='input5' type='date' name='inputDate'>
+    </div>
+    
+    <div>
+      <label>
+        <input type='radio' name='gender' value='Male'>
+        Male
+      </label>
+      <label>
+        <input type='radio' name='gender' value='Female'>
+        Female
+      </label>
+      <label>
+        <input type='radio' name='gender' value='Unknown'>
+        Unknown
+      </label>
+    </div>
+  </body>
+  
+  
+  <script>
+    // Gán dữ liệu bằng 1 dòng
+    assignDataTo('id', 'mySelectId',   values='Option 2');
+    assignDataTo('id', 'inputId',      values='try');
+    assignDataTo('id', 'inputDateId',  values='14-03-2023');
+    assignDataTo('id', 'inputDateId1', values='26/10/1992');
+
+    assignDataTo('name', 'test',       values=['Option 2', 'Option 3']);
+    assignDataTo('name', 'try',        values=['try 1', 'try 2', 3]);
+    assignDataTo('name', 'gender',     values='Female');
+    assignDataTo('name', 'inputDate',  values=['14-03-2023', '26/10/1992']);
+    
+    // Lấy dữ liệu bằng 1 dòng
+    console.log(getDataBy('id', 'mySelectId'));
+    console.log(getDataBy('id', 'inputId'));
+    console.log(getDataBy('id', 'inputDateId'));
+    console.log(getDataBy('id', 'inputDateId1'));
+    console.log(getDataBy('name', 'test'));
+    console.log(getDataBy('name', 'try'));
+    console.log(getDataBy('name', 'gender'));
+    console.log(getDataBy('name', 'inputDate'));
+    
+    // // Reset dữ liệu bằng 1 dòng, mở ẩn phần này dữ liệu sẽ được reset
+    // resetDataBy('id', 'mySelectId');
+    // resetDataBy('id', 'inputId');
+    // resetDataBy('id', 'inputDateId');
+    // resetDataBy('id', 'inputDateId1');
+    // resetDataBy('name', 'test');
+    // resetDataBy('name', 'try');
+    // resetDataBy('name', 'gender');
+    // resetDataBy('name', 'inputDate');
+    
+    function getDataBy(option, idOrName) {
+      if (option === 'id') {
+        var selectElement = document.getElementById(idOrName);
+        return selectElement.value;
+      } else if (option === 'name') {
+        var elements = document.getElementsByName(idOrName);
+        var array = [];
+        for (var i = 0; i < elements.length; i++) {
+          const selectElement = elements[i];
+          // Nếu element đang là kiểu RADIO
+          if (selectElement.tagName.toLowerCase() === 'input' && selectElement.type === 'radio'){
+            if (selectElement.checked) {
+              return selectElement.value;
+            }
+          } else {
+            // Nếu dữ liệu dạng NUMBER thì convert ra thành số
+            if (!isNaN(elements[i].value)){
+              array.push(Number(elements[i].value));
+            } else {
+              array.push(elements[i].value);
+            }
+          }
+        }
+        return array;
+      }
+    }
+    
+    function resetDataBy(option, idOrName) {
+      if (option === 'id') {
+        const selectElement = document.getElementById(idOrName);
+        // document.getElementById(idOrName).value = "";
+        
+        
+        // Nếu element đang là kiểu SELECT
+        if (selectElement.tagName.toLowerCase() === 'select') {
+          selectElement.selectedIndex = 0;
+        } else {
+          selectElement.value = "";
+        }
+      } else if (option === 'name') {
+        var elements = document.getElementsByName(idOrName);
+        for (var i = 0; i < elements.length; i++) {
+          const selectElement = elements[i];
+          // Nếu element đang là kiểu RADIO
+          if (selectElement.tagName.toLowerCase() === 'input' && selectElement.type === 'radio'){
+            if (i == 0) {
+              selectElement.checked = true;
+            } else {
+              selectElement.checked = false;
+            }
+          } else {
+            // Nếu element đang là kiểu SELECT
+            if (selectElement.tagName.toLowerCase() === 'select') {
+              selectElement.selectedIndex = 0;
+            } else {
+              selectElement.value = "";
+            }
+          }
+        }
+      }
+    }
+    
+    function assignDataToElement(selectElement, x) {
+      // Nếu element đang là kiểu SELECT
+      if (selectElement.tagName.toLowerCase() === 'select') {
+        const options = selectElement.options;
+        for (let j = 0; j < options.length; j++) {
+          const option = options[j];
+          if (option.text === x) {
+            option.selected = true;
+            break;
+          }
+        }
+      } else {
+        if (selectElement) {
+          // Nếu element đang là kiểu DATE
+          if (selectElement.type === "date") {
+            try {
+              var parts = x.split("-");
+              if (parts.length === 3 && !isNaN(parts[0]) && !isNaN(parts[1]) && !isNaN(parts[2])) {
+                var tempvalue = parts[2] + "-" + parts[1] + "-" + parts[0];
+                selectElement.value = tempvalue;
+              }
+            } catch {
+              // Do nothing
+            }
+            
+            try {
+              var parts = x.split("/");
+              if (parts.length === 3 && !isNaN(parts[0]) && !isNaN(parts[1]) && !isNaN(parts[2])) {
+                var tempvalue = parts[2] + "-" + parts[1] + "-" + parts[0];
+                selectElement.value = tempvalue;
+              }
+            } catch (error){
+              // Do nothing
+            }
+          } else {
+            // Nếu element đang là kiểu TEXT / NUMBER
+            try {
+              selectElement.value = x;
+            } catch (error){
+              // Do nothing
+            }
+          }
+        }
+      }
+    }
+
+    function assignDataTo(option, idOrName, values) {
+      // Option có hai loại là 'id' hoặc 'name'
+      // idOrName: nhập id hoặc name tương ứng
+      
+      if (option == 'name'){
+        const elements = document.getElementsByName(idOrName);
+        const y = values; // Dùng cho kiểu radio
+        for (let i = 0; i < elements.length; i++) {
+          const selectElement = elements[i];
+          const x = values[i];
+          
+          // Nếu element[i] là kiểu RADIO
+          if (selectElement.tagName.toLowerCase() === 'input' && selectElement.type === 'radio') {
+            if (selectElement.value === y) {
+              selectElement.checked = true;
+            }
+          } else {
+            // Nếu element[i] là kiểu TEXT / NUMBER / DATE / SELECT
+            assignDataToElement(selectElement, x);
+          }
+        }
+      } else {
+        if (option == 'id'){
+          const selectElement = document.getElementById(idOrName);
+          const x = values;
+          assignDataToElement(selectElement, x);
+        }
+      }
+    }
+  </script>
+</html>
