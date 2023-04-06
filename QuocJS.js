@@ -374,40 +374,6 @@ function getDataFromFieldId(id) {
   }
 }
 
-// function addOrUpdate() {
-//   dataHTMLUpdate = {
-//     demo1a: getDataFromFieldId('demo1a'),
-//     demo2a: getDataFromFieldId('demo2a'),
-//     demo3a: getDataFromFieldId('demo3a'),
-//     demo4a: getDataFromFieldId('demo4a'),
-//     demo5a: getDataFromFieldId('demo5a'),
-//     demo6a: getDataFromFieldId('demo6a'),
-
-//     demo1b: getDataFromFieldId('demo1b'),
-//     demo2b: getDataFromFieldId('demo2b'),
-//     demo3b: getDataFromFieldId('demo3b'),
-//     demo4b: getDataFromFieldId('demo4b'),
-//     demo5b: getDataFromFieldId('demo5b'),
-//     demo6b: getDataFromFieldId('demo6b'),
-//   };
-
-//   google.script.run.addDataToGoogleSheet(dataHTMLUpdate);
-
-//   resetValuesFromFieldId('demo1a');
-//   resetValuesFromFieldId('demo2a');
-//   resetValuesFromFieldId('demo3a');
-//   resetValuesFromFieldId('demo4a');
-//   resetValuesFromFieldId('demo5a');
-//   resetValuesFromFieldId('demo6a');
-
-//   resetValuesFromFieldId('demo1b');
-//   resetValuesFromFieldId('demo2b');
-//   resetValuesFromFieldId('demo3b');
-//   resetValuesFromFieldId('demo4b');
-//   resetValuesFromFieldId('demo5b');
-//   resetValuesFromFieldId('demo6b');
-// }
-
 function googleScriptRun(funcName, ...args) {
   return new Promise((resolve, reject) => {
     google.script.run
@@ -421,59 +387,4 @@ function googleScriptRun(funcName, ...args) {
 // (async () => {
 //   const selectData = await googleScriptRun("dataList", "Sheet 1", 1, 1);
 //   const radioData = await googleScriptRun("dataList", "Sheet 1", 1, 2);
-//   createFieldToId('demo1a', 'text');
-//   createFieldToId('demo2a', 'number');
-//   createFieldToId('demo3a', 'date');
-//   createFieldToId('demo4a', 'select',   withButton=0, ask=0, details=selectData, selectCommand='Chọn đi');
-//   createFieldToId('demo5a', 'radio',    withButton=0, ask=0, details=radioData);
-//   createFieldToId('demo6a', 'checkbox', withButton=0, ask=0, details=radioData);
-
-//   createFieldToId('demo1b', 'text',     withButton=1, ask=1);
-//   createFieldToId('demo2b', 'number',   withButton=1, ask=1);
-//   createFieldToId('demo3b', 'date',     withButton=1, ask=1);
-//   createFieldToId('demo4b', 'select',   withButton=1, ask=1, details=selectData, selectCommand='Chọn đi');
-//   createFieldToId('demo5b', 'radio',    withButton=1, ask=1, details=radioData);
-//   createFieldToId('demo6b', 'checkbox', withButton=1, ask=1, details=radioData);
-
-//   assignValuesToFieldId('demo1a', values='a');
-//   assignValuesToFieldId('demo2a', values=1);
-//   assignValuesToFieldId('demo3a', values='26/10/1992');
-//   assignValuesToFieldId('demo4a', values='Option 2');
-//   assignValuesToFieldId('demo5a', values='Choice 4');
-//   assignValuesToFieldId('demo6a', values=['Choice 4', 'Choice 2']);
-
-//   assignValuesToFieldId('demo1b', values=['a', 'b', 'c']);
-//   assignValuesToFieldId('demo2b', values=[1, 2, 3]);
-//   assignValuesToFieldId('demo3b', values=['26/10/1922', '30-04-1975', '20/11/2023']);
-//   assignValuesToFieldId('demo4b', values=['Option 2', 'Option 5', 'Option 3']);
-//   assignValuesToFieldId('demo5b', values=['Choice 4', 'Choice 1', 'Choice 3']);
-//   assignValuesToFieldId('demo6b', values=[['Choice 4', 'Choice 1', 'Choice 3'], ['Choice 5', 'Choice 1'], ['Choice 4', 'Choice 2', 'Choice 3']]);
-
-//   // resetValuesFromFieldId('demo1a');
-//   // resetValuesFromFieldId('demo2a');
-//   // resetValuesFromFieldId('demo3a');
-//   // resetValuesFromFieldId('demo4a');
-//   // resetValuesFromFieldId('demo5a');
-//   // resetValuesFromFieldId('demo6a');
-
-//   // resetValuesFromFieldId('demo1b');
-//   // resetValuesFromFieldId('demo2b');
-//   // resetValuesFromFieldId('demo3b');
-//   // resetValuesFromFieldId('demo4b');
-//   // resetValuesFromFieldId('demo5b');
-//   // resetValuesFromFieldId('demo6b');
-
-//   console.log(getDataFromFieldId('demo1a'));
-//   console.log(getDataFromFieldId('demo2a'));
-//   console.log(getDataFromFieldId('demo3a'));
-//   console.log(getDataFromFieldId('demo4a'));
-//   console.log(getDataFromFieldId('demo5a'));
-//   console.log(getDataFromFieldId('demo6a'));
-
-//   console.log(getDataFromFieldId('demo1b'));
-//   console.log(getDataFromFieldId('demo2b'));
-//   console.log(getDataFromFieldId('demo3b'));
-//   console.log(getDataFromFieldId('demo4b'));
-//   console.log(getDataFromFieldId('demo5b'));
-//   console.log(getDataFromFieldId('demo6b'));
 // })();
