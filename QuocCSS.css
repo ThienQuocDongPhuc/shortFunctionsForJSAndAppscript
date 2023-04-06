@@ -1,0 +1,167 @@
+.search-bar {
+display: flex;
+align-items: center;
+width: 100%;
+max-width: 400px;
+margin: 0 auto;
+margin-bottom: 10px;
+}
+
+.search-bar input[type="text"] {
+flex: 1;
+padding: 7px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 4px 0 0 4px;
+}
+
+.search-bar button {
+padding: 8px 16px;
+font-size: 16px;
+background-color: #4CAF50;
+color: #fff;
+border: none;
+border-radius: 0 4px 4px 0;
+cursor: pointer;
+}
+
+.input-row {
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+}
+
+.input-row label {
+display: inline-block;
+width: 100px;
+}
+
+.input-row input[type="text"],
+.input-row textarea,
+.input-row input[type="number"],
+.input-row input[type="image"],
+.input-row input[type="password"],
+.input-row input[type="date"]{
+width: 390px;
+padding: 10px;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+background-color: #f5f5f5;
+margin-right: 10px;
+}
+
+.input-row select {
+width: 410px;
+padding: 10px;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+background-color: #f5f5f5;
+margin-right: 10px;
+}
+
+.input-row input[type="radio"],
+.input-row input[type="checkbox"] {
+/* Hide the default radio button and checkbox */
+/* appearance: none; */
+/* -webkit-appearance: none; */
+/* -moz-appearance: none; */
+display: inline-block;
+width: 16px;
+height: 16px;
+border: 1px solid #ccc;
+border-radius: 50%;
+margin-right: 5px;
+position: relative;
+top: 4px;
+}
+
+.input-row input[type="radio"]:checked::before {
+/* Add a checkmark to the radio button when checked */
+content: '\2713';
+font-size: 12px;
+color: #fff;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+text-align: center;
+line-height: 14px;
+background-color: #4CAF50;
+border-radius: 50%;
+}
+
+.input-row input[type="checkbox"]:checked::before {
+/* Add a checkmark to the checkbox when checked */
+content: '\2713';
+font-size: 12px;
+color: #fff;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+text-align: center;
+line-height: 14px;
+background-color: #4CAF50;
+border-radius: 0;
+box-sizing: border-box;
+padding: 2px;
+}
+
+.input-row input[type="radio"]:hover,
+.input-row input[type="checkbox"]:hover {
+/* Add hover effect to the radio button and checkbox */
+border-color: #4CAF50;
+}
+
+.input-row input[type="radio"]:focus,
+.input-row input[type="checkbox"]:focus {
+/* Add focus effect to the radio button and checkbox */
+outline: none;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-row input[type="checkbox"] {
+border-radius: 0;
+}
+
+.input-row .add-btn,
+.input-row .remove-btn,
+.input-row .submit-btn {
+background-color: #4CAF50;
+color: #fff;
+padding: 10px 20px;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin-right: 5px;
+}
+
+.input-row .add-btn:hover {
+background-color: #3e8e41;
+}
+
+.input-row .submit-btn:hover {
+background-color: #e74c3c;
+}
+
+.input-row .remove-btn:hover {
+background-color: #f44336;
+}
+
+.input-row .add-btn:active,
+.input-row .submit-btn:active {
+background-color: #3e8e41;
+transform: translateY(1px);
+}
+
+.input-row .remove-btn {
+background-color: #ff3d00;
+margin-left: 5px;
+}
