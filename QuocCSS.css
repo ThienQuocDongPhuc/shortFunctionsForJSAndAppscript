@@ -67,8 +67,8 @@
 .input-row input[type="checkbox"] {
   /* Hide the default radio button and checkbox */
   appearance: none; 
-  /*-webkit-appearance: none; */
-  /*-moz-appearance: none; */
+  -webkit-appearance: none;
+  -moz-appearance: none;
   display: flex;
   vertical-align: middle;
   width: 20px;
